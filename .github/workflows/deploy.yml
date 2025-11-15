@@ -1,4 +1,5 @@
 name: Deploy Flutter Web to GitHub Pages
+
 on:
   push:
     branches: [ main ]
@@ -6,16 +7,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: stable
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Web App
+      - name: Build Flutter Web
         run: flutter build web --release --base-href "/pu-code-hackthon/"
 
       - name: Deploy to GitHub Pages

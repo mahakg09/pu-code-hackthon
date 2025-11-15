@@ -16,7 +16,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web App
-        run: flutter build web --release
+        run: flutter build web --release --base-href "/pu-code-hackthon/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
